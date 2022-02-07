@@ -25,7 +25,6 @@ public class Person {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        //System.out.println("Loaded " + persons.size() + " persons to search for!");
         return persons;
     }
 

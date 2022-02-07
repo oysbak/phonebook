@@ -9,7 +9,7 @@ public class Main {
 
         int count = 0;
         System.out.println("Start searching...");
-        long startTime = System.currentTimeMillis();
+        StopWatch stopWatch = StopWatch.start();
         for (Person person : persons) {
             for (Entry entry : phonebook) {
                 if (person.name.equals(entry.name)) {
@@ -17,12 +17,8 @@ public class Main {
                 }
             }
         }
-        long durationInMillis = System.currentTimeMillis() - startTime;
-        long millis = durationInMillis % 1000;
-        long second = (durationInMillis / 1000) % 60;
-        long minute = (durationInMillis / (1000 * 60)) % 60;
-        long hour = (durationInMillis / (1000 * 60 * 60)) % 24;
+        stopWatch.stop();
         System.out.print("Found " + count + " / " + persons.size() + " entries. ");
-        System.out.println("Time taken: " + minute + " min. " + second + " sec. " + millis + " ms.");
+        System.out.println(stopWatch);
     }
 }

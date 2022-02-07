@@ -40,7 +40,6 @@ public class Entry {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        //System.out.println("Loaded " + entries.size() + " entries from directory");
         return entries;
     }
 
