@@ -1,27 +1,33 @@
 package phonebook;
 
 public class StopWatch {
-    private final long start;
-    private long end;
+    private long startMark;
+    private long endMark;
 
-    private StopWatch() {
-        start = System.currentTimeMillis();
+    StopWatch(boolean doStart) {
+        if (doStart) {
+            start();
+        }
     }
 
-    public static StopWatch start() {
-        return new StopWatch();
+    void start() {
+        startMark = System.currentTimeMillis();
     }
 
-    void stop() {
-        end = System.currentTimeMillis();
+    String stop(boolean doPrint) {
+        endMark = System.currentTimeMillis();
+        if(doPrint){
+            System.out.println(this);
+        }
+        return this.toString();
     }
 
     @Override
     public String toString() {
-        long durationInMillis = end - start;
+        long durationInMillis = endMark - startMark;
         long millis = durationInMillis % 1000;
         long second = (durationInMillis / 1000) % 60;
         long minute = (durationInMillis / (1000 * 60)) % 60;
-        return "Time taken: " + minute + " min. " + second + " sec. " + millis + " ms.";
+        return minute + " min. " + second + " sec. " + millis + " ms.";
     }
 }

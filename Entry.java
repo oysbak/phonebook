@@ -1,15 +1,12 @@
 package phonebook;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.Objects;
 
-public class Entry {
+public class Entry implements Comparable<Entry> {
     public static int count;
     public final int id;
     final String phoneNumber;
-    final String name;
+    public final String name;
     boolean isDataOk = true;
 
     public Entry(String data) {
@@ -30,19 +27,6 @@ public class Entry {
         //checkData();
     }
 
-    public static List<Entry> loadEntries(String filePath) {
-        List<Entry> entries = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File(filePath));
-            while (scanner.hasNext()) {
-                entries.add(new Entry(scanner.nextLine()));
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return entries;
-    }
-
     private void checkData() {
         if (!isDataOk) {
             System.out.println(id + " name is default case");
@@ -60,7 +44,27 @@ public class Entry {
     }
 
     @Override
+    public int compareTo(Entry o) {
+        return this.name.compareTo(o.name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Entry entry = (Entry) o;
+        return name.equals(entry.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    @Override
     public String toString() {
-        return id + "\t" + phoneNumber + "\t" + name;
+        return name;
     }
 }
