@@ -3,6 +3,7 @@ package phonebook.directory;
 import phonebook.Entry;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class DirectoryBubbleJump extends Directory {
 
     public DirectoryBubbleJump(String filePath) {
         super();
+        entries = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(new File(filePath));
             entries.add(new Entry(scanner.nextLine()));

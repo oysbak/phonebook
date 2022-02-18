@@ -27,6 +27,12 @@ public class Entry implements Comparable<Entry> {
         //checkData();
     }
 
+    public Entry (String phoneNumber, String name) {
+        id = ++count;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+    }
+
     private void checkData() {
         if (!isDataOk) {
             System.out.println(id + " name is default case");
@@ -65,6 +71,6 @@ public class Entry implements Comparable<Entry> {
 
     @Override
     public String toString() {
-        return name;
+        return this.id + ": [" + name + "] [" + phoneNumber + "], HashCode:[" + this.hashCode() + "]" ;
     }
 }

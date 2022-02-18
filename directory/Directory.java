@@ -10,12 +10,11 @@ import java.util.Scanner;
 public class Directory {
     List<Entry> entries;
 
-    Directory() {
-        entries = new ArrayList<>();
+    protected Directory() {
     }
 
     public Directory(String filePath) {
-        this();
+        entries = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(new File(filePath));
             entries.add(new Entry(scanner.nextLine()));
