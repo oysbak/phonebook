@@ -91,14 +91,4 @@ public class DirectoryBubbleJump extends Directory {
             }
         }
     }
-
-    public void checkSortedData() {
-        for (int i = 1; i < entries.size(); i++) {
-            if (entries.get(i - 1).compareTo(entries.get(i)) >= 0) {
-                System.out.print(entries.get(i - 1));
-                System.out.print(" - ");
-                System.out.print(entries.get(i));
-            }
-        }
-    }
 }
